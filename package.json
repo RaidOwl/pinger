@@ -1,0 +1,25 @@
+{
+  "name": "pinger",
+  "version": "1.0.0",
+  "description": "pings sites to test if internet is up",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Captain-Knots/pinger.git"
+  },
+  "keywords": [
+    "network"
+  ],
+  "author": "Brett Duncan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Captain-Knots/pinger/issues"
+  },
+  "homepage": "https://github.com/Captain-Knots/pinger#readme",
+  "dependencies": {
+    "ping": "^0.4.1"
+  }
+}
