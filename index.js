@@ -8,7 +8,7 @@ var hosts = ['8.8.8.8','www.ebay.com','amazon.com'];
 var mydate;
 var datestr;
 
-async function test()
+async function run()
 {
   const checked = await checkLogs();
   const ret = await hostping(hosts); 
@@ -16,14 +16,12 @@ async function test()
         var msg = mydate + ' - Internet is DOWN!!!'
         console.log(msg);
         log('ERROR',datestr,msg);
-        //fs.appendFileSync('log.txt',msg + '\r\n');
-        //console.log('All hosts are alive');
     } else {
         //var msg = mydate + ' - Internet is fine'
         //console.log(msg);
     }
     await new Promise(resolve => setTimeout(resolve, freq));
-    test();
+    run();
 }
 
 function hostping(hosts) {
@@ -33,12 +31,10 @@ function hostping(hosts) {
     for (const host of hosts) {
       const res = await ping.promise.probe(host);
       //var msg = `host ${host} is ${res.alive ? 'alive' : 'dead'}`;
-      //console.log(msg);
       if (res.alive) { 
         status = false; 
         time = res.time;
         var msg = mydate + ' - ' + host + ': ' + time;
-        //console.log(msg);
         log('DEBUG',datestr,msg);
         if(time > pingThresh) {
           console.log(msg);
@@ -83,6 +79,5 @@ function formatDate(date) {
 
   return [year, month, day].join('-');
 }
-test();
-//setInterval(function() {test()}, freq);
+run();
 
